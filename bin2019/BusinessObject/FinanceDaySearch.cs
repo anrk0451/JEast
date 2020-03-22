@@ -327,12 +327,16 @@ namespace JEast.BusinessObject
 			int rowHandle = gridView1.FocusedRowHandle;
 			if (rowHandle >= 0)
 			{
-				//if(string.IsNullOrEmpty(gridView1.GetRowCellValue(rowHandle,"FA005").ToString()) )
-				//{
-				//	MessageBox.Show("当前记录已开税务发票!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-				//	return;
-				//}
-				if (!Envior.canInvoice)
+                s_fa002 = gridView1.GetRowCellValue(rowHandle, "FA002").ToString();
+                s_fa001 = gridView1.GetRowCellValue(rowHandle, "FA001").ToString();
+
+                if (PrtServAction.IsInvoiced(s_fa001))
+                {
+                    MessageBox.Show("当前记录已开税务发票!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                if (!Envior.canInvoice)
 				{
 					MessageBox.Show("当前用户没有打印发票权限!", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 					return;
@@ -343,8 +347,7 @@ namespace JEast.BusinessObject
 					return;
 				}
 
-				s_fa002 = gridView1.GetRowCellValue(rowHandle, "FA002").ToString();
-				s_fa001 = gridView1.GetRowCellValue(rowHandle, "FA001").ToString();
+				
 
 				Frm_taxClientInfo frm_client = new Frm_taxClientInfo();
 

@@ -103,10 +103,10 @@ namespace JEast.Action
 			op_fa001.Direction = ParameterDirection.Input;
 			op_fa001.Value = fa001;
 
-			//结算流水号
+			//作废人
 			OracleParameter op_handler = new OracleParameter("ic_handler", OracleDbType.Varchar2, 10);
 			op_handler.Direction = ParameterDirection.Input;
-			op_handler.Value = fa001;
+			op_handler.Value = handler;
 
 			return SqlAssist.ExecuteProcedure("pkg_business.prc_FinanceRemove",
 				new OracleParameter[] {op_fa001,op_handler});
@@ -236,6 +236,34 @@ namespace JEast.Action
 			return Convert.ToInt32(SqlAssist.ExecuteScalar("select pkg_report.fun_GetClassStat_BS from dual"));
 		}
 
+
+		/// <summary>
+		/// 收款员收款统计
+		/// </summary>
+		/// <param name="dbegin"></param>
+		/// <param name="dend"></param>
+		/// <param name="handler"></param>
+		/// <returns></returns>
+		public static int CasherStat(string dbegin, string dend, string handler)
+		{
+			//开始日期
+			OracleParameter op_dbegin = new OracleParameter("ic_begin", OracleDbType.Varchar2, 20);
+			op_dbegin.Direction = ParameterDirection.Input;
+			op_dbegin.Value = dbegin;
+
+			//结束日期
+			OracleParameter op_dend = new OracleParameter("ic_end", OracleDbType.Varchar2, 20);
+			op_dend.Direction = ParameterDirection.Input;
+			op_dend.Value = dend;
+
+			//收款人
+			OracleParameter op_handler = new OracleParameter("ic_handler", OracleDbType.Varchar2, 10);
+			op_handler.Direction = ParameterDirection.Input;
+			op_handler.Value = handler;
+
+			return SqlAssist.ExecuteProcedure("pkg_report.prc_CasherStat",
+				new OracleParameter[] { op_dbegin, op_dend, op_handler });
+		}
 
 	}
 }

@@ -35,42 +35,50 @@ namespace JEast.BusinessObject
 		private void Report_ItemStat_Load(object sender, EventArgs e)
 		{
 			gridControl1.DataSource = dt_cs;
-		}
+            this.DisplayContion();
+        }
 
 		private void BarButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
-			Frm_Report_ClassStat frm_stat = new Frm_Report_ClassStat();
-
-			frm_stat.swapdata["BusinessObject"] = this;
-
-			if (frm_stat.ShowDialog() == DialogResult.OK)
-			{
-				frm_stat.Dispose();
-
-				classArry = this.swapdata["class"] as string[];
-
-				if (this.swapdata["dbegin"] == null || this.swapdata["dbegin"] is System.DBNull)
-				{
-					s_begin = "1900-01-01";
-				}
-				else
-				{
-					s_begin = Convert.ToDateTime(this.swapdata["dbegin"]).ToString("yyyy-MM-dd");
-				}
-
-				if (this.swapdata["dend"] == null || this.swapdata["dend"] is System.DBNull)
-				{
-					s_end = "9999-12-31";
-				}
-				else
-				{
-					s_end = Convert.ToDateTime(this.swapdata["dend"]).ToString("yyyy-MM-dd");
-				}
-
-				this.RefreshData();
-
-			}
+            this.DisplayContion();
 		}
+
+        /// <summary>
+        /// 显示查询条件窗口
+        /// </summary>
+        private void DisplayContion()
+        {
+            Frm_Report_ClassStat frm_stat = new Frm_Report_ClassStat();
+            frm_stat.swapdata["BusinessObject"] = this;
+
+            if (frm_stat.ShowDialog() == DialogResult.OK)
+            {
+                frm_stat.Dispose();
+
+                classArry = this.swapdata["class"] as string[];
+
+                if (this.swapdata["dbegin"] == null || this.swapdata["dbegin"] is System.DBNull)
+                {
+                    s_begin = "1900-01-01";
+                }
+                else
+                {
+                    s_begin = Convert.ToDateTime(this.swapdata["dbegin"]).ToString("yyyy-MM-dd");
+                }
+
+                if (this.swapdata["dend"] == null || this.swapdata["dend"] is System.DBNull)
+                {
+                    s_end = "9999-12-31";
+                }
+                else
+                {
+                    s_end = Convert.ToDateTime(this.swapdata["dend"]).ToString("yyyy-MM-dd");
+                }
+
+                this.RefreshData();
+
+            }
+        }
 
 		/// <summary>
 		/// 刷新数据
@@ -89,7 +97,13 @@ namespace JEast.BusinessObject
 				gridColumn4.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
 				gridColumn4.SummaryItem.DisplayFormat = "合计 = {0:N2}";
 
-				bs_bs.Caption = "           共有收费笔数:" + MiscAction.GetClassStat_BS().ToString() + "笔";
+                gridColumn6.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridColumn6.SummaryItem.DisplayFormat = "税额合计 = {0:N2}";
+
+                gridColumn8.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Sum;
+                gridColumn8.SummaryItem.DisplayFormat = "不含税合计 = {0:N2}";
+
+                bs_bs.Caption = "           共有收费笔数:" + MiscAction.GetClassStat_BS().ToString() + "笔";
 
 				//gridColumn1.SummaryItem.SummaryType = DevExpress.Data.SummaryItemType.Custom;
 				//gridColumn1.SummaryItem.DisplayFormat = "合计 = {0:N2}";

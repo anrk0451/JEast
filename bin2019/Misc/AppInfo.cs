@@ -12,7 +12,7 @@ namespace JEast.Misc
     class AppInfo
     {
         private static string _AppTitle = "殡仪馆管理信息系统";     //应用标题
-        private static string _AppVersion = "19.0914004";           //应用版本号
+        private static string _AppVersion = "20.0229001";           //应用版本号
         private static string _UnitName = "佳木斯东郊殡仪馆";       //使用单位    
         private static string _ROOTID = "0000000000";               //root用户Id
 

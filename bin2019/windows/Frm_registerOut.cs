@@ -155,7 +155,10 @@ namespace JEast.windows
 			//补退情况
 			if (checkEdit1.Checked)
 			{
-				nums = decimal.Parse(txtEdit_nums.Text);
+				if (string.IsNullOrEmpty(txtEdit_nums.Text))
+					nums = 0;
+				else
+					nums = decimal.Parse(txtEdit_nums.Text);
 			}
 			else
 			{
@@ -163,7 +166,7 @@ namespace JEast.windows
 			}
 
 			if (MessageBox.Show("确认要继续办理迁出吗？本业务将不能回退!", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.No) return;
-			if( Convert.ToDecimal(txtEdit_fee.Text) > 0 && Envior.cur_userId != AppInfo.ROOTID)
+			if( Convert.ToDecimal(string.IsNullOrEmpty(txtEdit_fee.Text) ? "0":txtEdit_fee.Text) > 0 && Envior.cur_userId != AppInfo.ROOTID)
 			{
 				MessageBox.Show("当前记录已经欠费,不能迁出!","提示",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
 				return;

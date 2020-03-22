@@ -75,10 +75,12 @@ namespace JEast.windows
 				Envior.cur_invoicer = uc01.uc009;
 				Envior.cur_checker = uc01.uc010;
 
-				ConfigurationManager.OpenExeConfiguration(System.Windows.Forms.Application.ExecutablePath).AppSettings.Settings["lastusername"].Value.ToString();
+                Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+                config.AppSettings.Settings["lastusername"].Value = s_userCode;
+                config.Save(ConfigurationSaveMode.Modified);
 
-				//设置打印权限 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-				if (uc01.uc005.ToString() == "1")
+                //设置打印权限 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                if (uc01.uc005.ToString() == "1")
 					Envior.canInvoice = true;
 				else
 					Envior.canInvoice = false;
@@ -94,14 +96,24 @@ namespace JEast.windows
 
         private void Login_Load(object sender, EventArgs e)
         {
-			this.Focus();
-            textEdit_user.Focus();
-            #region It's for test!
-            //textEdit_user.Text = "root";
-            //textEdit_pwd.Text = "root";
-            #endregion
+            
+            
         }
 
-         
+        private void Login_Shown(object sender, EventArgs e)
+        {
+            this.Focus();
+
+            string lastuser = ConfigurationManager.OpenExeConfiguration(Application.ExecutablePath).AppSettings.Settings["lastusername"].Value.ToString();
+            if (!string.IsNullOrEmpty(lastuser))
+            {
+                textEdit_user.Text = lastuser;
+                textEdit_pwd.Focus();
+            }
+            else
+            {
+                textEdit_user.Focus();
+            }
+        }
     }
 }

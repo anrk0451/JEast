@@ -157,6 +157,7 @@ namespace JEast.BusinessObject
 			string s_rc001 = string.Empty;
 			if (rowHandle >=0)
 			{
+                s_rc001 = gridView1.GetRowCellValue(rowHandle,"RC001").ToString();
 				PrtServAction.PrtRegisterOutNotice(s_rc001, Envior.mform.Handle.ToInt32());
 			}
 		}

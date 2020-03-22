@@ -630,5 +630,25 @@ namespace JEast.BusinessObject
 				
 			}
 		}
-	}
+
+        private void Txtedit_ac003_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtedit_ac050_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Lookup_store_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Txtedit_ac018_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

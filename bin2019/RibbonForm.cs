@@ -429,5 +429,15 @@ namespace JEast
 		{
 			this.openBusinessObject("Report_ItemStat");
 		}
+
+		/// <summary>
+		/// 收款员收款统计
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void barButtonItem37_ItemClick(object sender, ItemClickEventArgs e)
+		{
+			this.openBusinessObject("Report_CasherStat");
+		}
 	}
 }

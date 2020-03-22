@@ -28,7 +28,13 @@ namespace JEast.Action
 			else
 			{
 				Envior.mform.goldTax.GetInfo();
-				return Envior.mform.goldTax.InfoNumber.ToString();
+                if (Convert.ToInt32(Envior.mform.goldTax.InfoNumber) == 0)
+                {
+                    Envior.mform.goldTax.GetInfo();
+                    return Envior.mform.goldTax.InfoNumber.ToString();
+                }
+                else
+                    return Envior.mform.goldTax.InfoNumber.ToString();
 			}
 
 		}
@@ -743,5 +749,18 @@ namespace JEast.Action
 						   s_end
 			 );
 		}
+
+        /// <summary>
+        /// 判断是否开具发票
+        /// </summary>
+        /// <param name="fa001"></param>
+        /// <returns></returns>
+        public static bool IsInvoiced(string fa001)
+        {
+            if (string.IsNullOrEmpty(SqlAssist.ExecuteScalar("select fa005 from fa01 where fa001 ='" + fa001 + "'").ToString()))
+                return false;
+            else
+                return true;
+        }
 	}
 }

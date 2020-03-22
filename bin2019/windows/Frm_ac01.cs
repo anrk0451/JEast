@@ -217,6 +217,8 @@ namespace JEast.windows
             if (action.Equals("add"))
             {
                 ac01.ac001 = Tools.GetEntityPK("AC01");
+                ac01.ac100 = Envior.cur_userId;                 //经办人
+                ac01.ac200 = DateTime.Now;                      //经办日期
             }
             
 
@@ -250,9 +252,7 @@ namespace JEast.windows
 
             if (lookUp_ac060.EditValue != null)
                 ac01.ac060 = lookUp_ac060.EditValue.ToString(); //灵车司机
-
-            ac01.ac100 = Envior.cur_userId;                 //经办人
-            ac01.ac200 = DateTime.Now;                      //经办日期
+ 
             ac01.ac110 = Envior.cur_userId;                 //最后经办人
             ac01.ac220 = DateTime.Now;                      //最后经办日期
             ac01.ac099 = mem_ac099.Text;                    //备注

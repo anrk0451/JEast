@@ -104,7 +104,7 @@ namespace JEast.BusinessObject
 				}
 				else
 				{
-					s_ac003 = this.swapdata["RC003"].ToString() + "%";
+					s_ac003 = this.swapdata["AC003"].ToString() + "%";
 				}
 
 				s_ac007 = this.swapdata["AC007"].ToString();
@@ -247,5 +247,21 @@ namespace JEast.BusinessObject
 				}
 			}
 		}
-	}
+
+        private void barButtonItem7_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Title = "导出Excel";
+            fileDialog.Filter = "Excel文件(*.xlsx)|*.xlsx";
+
+            DialogResult dialogResult = fileDialog.ShowDialog(this);
+            if (dialogResult == DialogResult.OK)
+            {
+                DevExpress.XtraPrinting.XlsxExportOptions options = new DevExpress.XtraPrinting.XlsxExportOptions();
+                options.TextExportMode = TextExportMode.Text;//设置导出模式为文本
+                gridControl1.ExportToXlsx(fileDialog.FileName, options);
+                XtraMessageBox.Show("导出成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+    }
 }

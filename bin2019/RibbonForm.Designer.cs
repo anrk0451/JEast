@@ -156,7 +156,7 @@
 			this.ribbon.QuickToolbarItemLinks.Add(this.barButtonItem1);
 			this.ribbon.QuickToolbarItemLinks.Add(this.barButtonItem2);
 			this.ribbon.QuickToolbarItemLinks.Add(this.barButtonItem33);
-			this.ribbon.Size = new System.Drawing.Size(1178, 185);
+			this.ribbon.Size = new System.Drawing.Size(1172, 186);
 			this.ribbon.StatusBar = this.ribbonStatusBar;
 			// 
 			// barStaticItem1
@@ -484,6 +484,7 @@
 			this.barButtonItem37.Id = 45;
 			this.barButtonItem37.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem37.ImageOptions.SvgImage")));
 			this.barButtonItem37.Name = "barButtonItem37";
+			this.barButtonItem37.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem37_ItemClick);
 			// 
 			// barButtonItem38
 			// 
@@ -500,6 +501,7 @@
 			this.barButtonItem39.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem39.ImageOptions.Image")));
 			this.barButtonItem39.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem39.ImageOptions.LargeImage")));
 			this.barButtonItem39.Name = "barButtonItem39";
+			this.barButtonItem39.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
 			// 
 			// ribbonPage1
 			// 
@@ -592,19 +594,19 @@
 			this.ribbonStatusBar.ItemLinks.Add(this.bs_version);
 			this.ribbonStatusBar.ItemLinks.Add(this.barHeaderItem2);
 			this.ribbonStatusBar.ItemLinks.Add(this.barStaticItem4);
-			this.ribbonStatusBar.Location = new System.Drawing.Point(0, 624);
+			this.ribbonStatusBar.Location = new System.Drawing.Point(0, 610);
 			this.ribbonStatusBar.Name = "ribbonStatusBar";
 			this.ribbonStatusBar.Ribbon = this.ribbon;
-			this.ribbonStatusBar.Size = new System.Drawing.Size(1178, 27);
+			this.ribbonStatusBar.Size = new System.Drawing.Size(1172, 41);
 			// 
 			// xtraTabControl1
 			// 
 			this.xtraTabControl1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InAllTabPageHeaders;
 			this.xtraTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.xtraTabControl1.Location = new System.Drawing.Point(0, 185);
+			this.xtraTabControl1.Location = new System.Drawing.Point(0, 186);
 			this.xtraTabControl1.Name = "xtraTabControl1";
 			this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-			this.xtraTabControl1.Size = new System.Drawing.Size(1178, 439);
+			this.xtraTabControl1.Size = new System.Drawing.Size(1172, 424);
 			this.xtraTabControl1.TabIndex = 2;
 			this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1});
@@ -616,7 +618,7 @@
 			this.xtraTabPage1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("xtraTabPage1.ImageOptions.Image")));
 			this.xtraTabPage1.Name = "xtraTabPage1";
 			this.xtraTabPage1.ShowCloseButton = DevExpress.Utils.DefaultBoolean.False;
-			this.xtraTabPage1.Size = new System.Drawing.Size(1172, 407);
+			this.xtraTabPage1.Size = new System.Drawing.Size(1169, 392);
 			this.xtraTabPage1.Text = "欢迎";
 			// 
 			// pictureBox1
@@ -627,7 +629,7 @@
 			this.pictureBox1.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.InitialImage")));
 			this.pictureBox1.Location = new System.Drawing.Point(0, 0);
 			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(1172, 407);
+			this.pictureBox1.Size = new System.Drawing.Size(1169, 392);
 			this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
 			this.pictureBox1.TabIndex = 0;
 			this.pictureBox1.TabStop = false;
@@ -636,10 +638,11 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1178, 651);
+			this.ClientSize = new System.Drawing.Size(1172, 651);
 			this.Controls.Add(this.xtraTabControl1);
 			this.Controls.Add(this.ribbonStatusBar);
 			this.Controls.Add(this.ribbon);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "RibbonForm";
 			this.Ribbon = this.ribbon;
 			this.StatusBar = this.ribbonStatusBar;

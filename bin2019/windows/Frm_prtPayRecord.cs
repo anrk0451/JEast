@@ -30,7 +30,7 @@ namespace JEast.windows
 		{
 			rc001 = this.swapdata["RC001"].ToString();
 			//检索数据
-			rc04Adapter.SelectCommand.CommandText = "select * from v_rc04 where rc001='" + rc001 + "' order by rc010";
+			rc04Adapter.SelectCommand.CommandText = "select * from v_rc04 where rc001='" + rc001 + "' order by rc020";
 			rc04Adapter.Fill(dt_rc04);
 
 			gridControl1.DataSource = dt_rc04;
